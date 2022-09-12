@@ -1,0 +1,90 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+
+
+{% include 'partials/_busca.html' %}
+
+{% include 'partials/_menu.html' %}
+
+<!-- ##### Contact Form Area Start ##### -->
+<div class="contact-area section-padding-0-80">
+    <div class="container">
+        <div class="col-12 text-center">
+            <!-- <div class="section-heading"> -->
+            <h4>Adicione sua foto, {{ user.username }} :)</h4>
+            <!-- </div> -->
+        </div>
+
+
+        <div class="row">
+            <div class="col-12">
+                <p>Alguns campos são obrigatórios</p>
+                <div class="contact-form-area">
+                    <form action="{% url 'cria_foto' %}" method="post" enctype="multipart/form-data">
+                        {% csrf_token %}
+                        <div class="d-flex form-group justify-content-between">
+
+                            <div class="col-6">
+                                <div class="d-flex justify-content-between">
+                                    <div>
+                                        <label for="publicada"><b>Publicada?</b></label>
+                                        <input type="checkbox" id="publicada" class="form-control" name="publicada">
+                                    </div>
+
+                                    <div class="col-10">
+                                        <label for="titulo_foto"><b>Título</b></label>
+                                        <input type="text" id="titulo_foto" class="form-control" name="titulo_foto"
+                                            placeholder="" required>
+                                    </div>
+                                </div>
+
+                                <label for="file"><b>Descrição</b></label>
+                                <textarea class="form-control" name="descricao"></textarea>
+
+                                <label for="file"><b>Foto</b></label>
+                                <input type="file" class="form-control" name="fotinha" required>
+
+                            </div>
+
+                            <div class="col-6">
+
+                                <label for="file"><b>Fonte</b></label>
+                                <input type="text" class="form-control" name="fonte"></textarea>
+
+                                <label for="file"><b>Local</b></label>
+                                <input type="text" class="form-control" name="local">
+
+                                <label for="file"><b>Categoria</b></label>
+                                <input type="text" class="form-control" name="categoria"
+                                    placeholder="Ex. pessoal ou em grupo" value={{foto.categoria}}>
+
+                                <div class="d-flex justify-content-between">
+                                    <div>
+                                        <label for="file"><b>Data da postagem</b></label>
+                                        <input id="data_foto" name="data_foto" type="date" class="form-control"
+                                            value="{{ data_foto | date:'Y-m-d'}}">
+                                    </div>
+
+                                    <div>
+                                        <label for="file"><b>Votos</b></label>
+                                        <input type="number" class="form-control" name="votos">
+
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="col-12 text-center">
+                            <button class="btn delicious-btn mt-30" type="submit">Adicionar foto</button>
+                        </div>
+
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+{% include 'partials/_footer.html' %}
+{% endblock %}

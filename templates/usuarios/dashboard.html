@@ -1,0 +1,55 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+
+
+{% include 'partials/_busca.html' %}
+
+{% include 'partials/_menu.html' %}
+
+<div class="contact-area section-padding-0">
+    <div class="container">
+        <div class="row">
+            <div class="col-12">
+                <div class="section-heading">
+                    <h3>Olá {{ user.username }}</h3>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- ##### Best Receipe Area Start ##### -->
+<section class="best-receipe-area">
+    <div class="container">
+        <div class="row">
+            <!-- <div class="d-flex"> -->
+
+            {% if galeria %}
+            {% for foto in galeria %}
+            <!-- Single Best Receipe Area -->
+            <div class="col-12 col-sm-6 col-lg-4">
+                <div class="single-best-receipe-area mb-30">
+
+                    <img src="{{ foto.fotinha.url }}" alt="" width="100%">
+
+                    <div class="receipe-content">
+                        <a href="{% url 'foto' foto.id %}">
+                            <h5>{{ foto.titulo_foto }}</h5>
+                            <a href="{% url 'edita_foto' foto.id %}" type="button" class="btn btn-info">Editar</a>
+                            <a href="{% url 'deleta_foto' foto.id %}" type="button" class="btn btn-danger">Deletar</a>
+                        </a>
+                    </div>
+                </div>
+            </div>
+            {% endfor %}
+            {% else %}
+            {% endif %}
+            <!-- </div> -->
+        </div>
+    </div>
+</section>
+<!-- ##### Best Receipe Area End ##### -->
+
+{% include 'partials/_footer.html' %}
+{% endblock %}

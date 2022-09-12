@@ -1,0 +1,68 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+{% load widget_tweaks %}
+
+
+{% include 'partials/_busca.html' %}
+
+{% include 'partials/_menu.html' %}
+
+<div class="container">
+    <div class="form-group">
+        <div class="col-10 mb-3">
+            <label><b>{{ foto.titulo_foto.label }}:</b></label>
+            <h4>{{ foto.titulo_foto.value }}</h4>
+        </div>
+        <div class="d-flex justify-content-between">
+            <div class="col-6">
+                <div class="col-12 d-flex">
+
+                </div>
+                <div class="col-12 mb-5">
+                    <img src="/media/{{ foto.fotinha.value }}" alt="" width="100%">
+                </div>
+            </div>
+            <div class="col-6 container">
+                <div class="container receipe-content">
+                    <div class="single-best-receipe-area my-2">
+                        <div class="col-12 receipe-headline mb-4">
+                            <label for=" {{ foto.descricao.id_for_label }}"><b>{{ foto.descricao.label }}</b></label>
+                            <span>{{ foto.descricao.value }}</span>
+                        </div>
+
+                        <div class="col-12 receipe-headline mb-4">
+                            <label for=" {{ foto.fonte.id_for_label }}"><b>{{ foto.fonte.label }}</b></label>
+                            <span> {{ foto.fonte.value }}</span>
+                        </div>
+
+                        <div class="col-12 receipe-headline mb-4">
+                            <label for=" {{ foto.categoria.id_for_label }}"><b>{{ foto.categoria.label }}</b></label>
+                            <span> {{ foto.categoria.value }}</span>
+                        </div>
+
+                        <div class="col-12 receipe-headline mb-4">
+                            <label for=" {{ foto.local.id_for_label }}"><b>{{ foto.local.label }}</b></label>
+                            <span> {{ foto.local.value }}</span>
+                        </div>
+
+                        <div class="col-12 receipe-headline mb-4">
+                            <label for=" {{ foto.data_foto.id_for_label }}"><b>{{ foto.data_foto.label }}</b></label>
+                            <span>{{ foto.data_foto.value | date:'Y-m-d'}}</span>
+                        </div>
+
+                        <div class="col-12 receipe-headline mb-4">
+                            <label for=" {{ foto.votos.id_for_label }}"><b>{{ foto.votos.label }}</b></label>
+                            <span>{{ foto.votos.value }}</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+{% include 'partials/_footer.html' %}
+{% endblock %}
